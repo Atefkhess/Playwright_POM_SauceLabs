@@ -11,10 +11,27 @@ test.beforeEach(async ({ page }) => {
 })
 
 
-test('test', async ({ page }) => {
+test('@e2etestAddProductsToCart', async ({ page }) => {
 
     const product = new ProductsPage(page);
 
     await product.verifyProductPage();
 
+    await product.addProductsToCart();
+
+
+    await product.checkProductsAdded();
+
+    await product.removeProductFromCart();
+
+
 });
+test('@e2etestSortedProducts', async ({ page }) => {
+
+    const product = new ProductsPage(page);
+
+    await product.verifySortedByPrice();
+
+}
+)
+
