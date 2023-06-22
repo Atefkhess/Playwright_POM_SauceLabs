@@ -43,7 +43,7 @@ export class ProductsPage {
         expect(backPackIsAdded).toBe(false);
 
     }
-    async verifySortedByPrice(page) {
+    async verifySortedByPrice() {
        
             const beforeFilterPriceList = await this.page.$$eval(this.filterPrice, (elements) =>
               elements.map((element) => {
