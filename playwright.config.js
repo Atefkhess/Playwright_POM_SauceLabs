@@ -16,14 +16,23 @@ module.exports = defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
+  /*Maximum tim one test can run for. */
+  timeout: 50 * 1000,
+  expect:{
+    /**
+     * Maximum time ecpect() should wait for the condition to be met .
+     * For Example in 'await expect(locator).toHaveText();
+     */
+    timeout: 5000
+  },
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['html', { output: 'C:\Users\Emichuu\Desktop\PlaywrightQA\swagLabsPOM_Playwright' }],
-  ],
+  reporter: 
+    'html', 
+  
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */

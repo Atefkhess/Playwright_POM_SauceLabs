@@ -10,7 +10,7 @@ test.describe('E2E Test Suite', () => {
   test.beforeAll(async () => {
     browser = await chromium.launch({
       slowMo: 3000,
-      headless: false,
+      headless: true,
     });
   });
 
@@ -44,12 +44,15 @@ test.describe('E2E Test Suite', () => {
 
     await product.checkProductsAdded();
 
+    await page.screenshot({ path: 'images/screenshot.png' });
+
     await product.removeProductFromCart();
   });
 
   test('@e2etestSortedProducts', async () => {
     const product = new ProductsPage(page);
-
+    await page.screenshot({ path: 'images/beforeSortScreenshot.png' });
     await product.verifySortedByPrice();
+    await page.screenshot({ path: 'images/afterSortScreenshot.png' });
   });
 });
